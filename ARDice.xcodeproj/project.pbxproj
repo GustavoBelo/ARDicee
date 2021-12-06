@@ -16,7 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		AA948A23275EB8AA00D995F9 /* ARDicee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARDicee.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA948A23275EB8AA00D995F9 /* ARDice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARDice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA948A26275EB8AA00D995F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA948A28275EB8AA00D995F9 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		AA948A2A275EB8AA00D995F9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,7 +47,7 @@
 		AA948A24275EB8AA00D995F9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AA948A23275EB8AA00D995F9 /* ARDicee.app */,
+				AA948A23275EB8AA00D995F9 /* ARDice.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -68,9 +68,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		AA948A22275EB8AA00D995F9 /* ARDicee */ = {
+		AA948A22275EB8AA00D995F9 /* ARDice */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AA948A36275EB8AB00D995F9 /* Build configuration list for PBXNativeTarget "ARDicee" */;
+			buildConfigurationList = AA948A36275EB8AB00D995F9 /* Build configuration list for PBXNativeTarget "ARDice" */;
 			buildPhases = (
 				AA948A1F275EB8AA00D995F9 /* Sources */,
 				AA948A20275EB8AA00D995F9 /* Frameworks */,
@@ -80,9 +80,9 @@
 			);
 			dependencies = (
 			);
-			name = ARDicee;
+			name = ARDice;
 			productName = ARDicee;
-			productReference = AA948A23275EB8AA00D995F9 /* ARDicee.app */;
+			productReference = AA948A23275EB8AA00D995F9 /* ARDice.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -100,7 +100,7 @@
 					};
 				};
 			};
-			buildConfigurationList = AA948A1E275EB8AA00D995F9 /* Build configuration list for PBXProject "ARDicee" */;
+			buildConfigurationList = AA948A1E275EB8AA00D995F9 /* Build configuration list for PBXProject "ARDice" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -113,7 +113,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				AA948A22275EB8AA00D995F9 /* ARDicee */,
+				AA948A22275EB8AA00D995F9 /* ARDice */,
 			);
 		};
 /* End PBXProject section */
@@ -302,8 +302,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = gustavobelo.ARDicee;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = gustavobelo.ARDice;
+				PRODUCT_NAME = ARDice;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -332,8 +332,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = gustavobelo.ARDicee;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = gustavobelo.ARDice;
+				PRODUCT_NAME = ARDice;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -343,7 +343,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		AA948A1E275EB8AA00D995F9 /* Build configuration list for PBXProject "ARDicee" */ = {
+		AA948A1E275EB8AA00D995F9 /* Build configuration list for PBXProject "ARDice" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AA948A34275EB8AB00D995F9 /* Debug */,
@@ -352,7 +352,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AA948A36275EB8AB00D995F9 /* Build configuration list for PBXNativeTarget "ARDicee" */ = {
+		AA948A36275EB8AB00D995F9 /* Build configuration list for PBXNativeTarget "ARDice" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AA948A37275EB8AB00D995F9 /* Debug */,
