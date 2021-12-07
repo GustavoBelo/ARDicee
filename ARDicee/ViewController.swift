@@ -11,7 +11,12 @@ import ARKit
 
 class ViewController: UIViewController, ARSCNViewDelegate {
     
+    private var diceArray = [SCNNode]()
+    
     @IBOutlet var sceneView: ARSCNView!
+    @IBAction func rollAgain(_ sender: UIBarButtonItem) {
+        rollAll()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,29 +82,40 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         let results = sceneView.session.raycast(query)
         if let hitResult = results.first{
-            setDiceLocation(with: hitResult)
+            setDiceLocationAndRoll(with: hitResult)
         }
     }
     
-    private func setDiceLocation(with hitResult: ARRaycastResult) {
+    private func setDiceLocationAndRoll(with hitResult: ARRaycastResult) {
         let diceScene = SCNScene(named: "art.scnassets/diceCollada.scn")!
         if let diceNode = diceScene.rootNode.childNode(withName: "Dice", recursively: true){
             diceNode.position = SCNVector3(
                 x: hitResult.worldTransform.columns.3.x,
                 y: hitResult.worldTransform.columns.3.y + diceNode.boundingSphere.radius,
                 z: hitResult.worldTransform.columns.3.z)
+            diceArray.append(diceNode)
             sceneView.scene.rootNode.addChildNode(diceNode)
             
-            let randomX = Float(arc4random_uniform(4) + 1) * (Float.pi/2)
-            let randomZ = Float(arc4random_uniform(4) + 1) * (Float.pi/2)
-            
-            diceNode.runAction(
-                SCNAction.rotateBy(
-                    x: CGFloat(randomX * 5),
-                    y: 0,
-                    z: CGFloat(randomZ * 5),
-                    duration: 0.8)
-            )
+            roll(diceNode)
+        }
+    }
+    
+    private func roll(_ dice: SCNNode){
+        let randomX = Float(arc4random_uniform(4) + 1) * (Float.pi/2)
+        let randomZ = Float(arc4random_uniform(4) + 1) * (Float.pi/2)
+        
+        dice.runAction(
+            SCNAction.rotateBy(
+                x: CGFloat(randomX * 5),
+                y: 0,
+                z: CGFloat(randomZ * 5),
+                duration: 0.8)
+        )
+    }
+    
+    private func rollAll() {
+        diceArray.forEach{ dice in
+            roll(dice)
         }
     }
 }
