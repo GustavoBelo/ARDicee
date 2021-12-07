@@ -42,23 +42,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.session.pause()
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let touch = touches.first {
-            let touchLocation = touch.location(in: sceneView)
-            let results = sceneView.hitTest(touchLocation, types: .existingPlaneUsingExtent)
-            if let hitResult = results.first {
-                let diceScene = SCNScene(named: "art.scnassets/diceCollada.scn")!
-                if let diceNode = diceScene.rootNode.childNode(withName: "Dice", recursively: true){
-                    diceNode.position = SCNVector3(
-                        x: hitResult.worldTransform.columns.3.x,
-                        y: hitResult.worldTransform.columns.3.y + diceNode.boundingSphere.radius,
-                        z: hitResult.worldTransform.columns.3.z)
-                    sceneView.scene.rootNode.addChildNode(diceNode)
-                }
-            }
-        }
-    }
-    
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor){
         guard let planeAnchor = anchor as? ARPlaneAnchor else { return }
         
@@ -77,5 +60,46 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         planeNode.geometry = plane
         
         node.addChildNode(planeNode)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first {
+            touchSucceded(touch)
+        }
+    }
+    
+    private func touchSucceded(_ touch: UITouch) {
+        let touchLocation = touch.location(in: sceneView)
+        guard let query = sceneView.raycastQuery(
+            from: touchLocation,
+            allowing: .existingPlaneInfinite,
+            alignment: .any) else {return}
+        
+        let results = sceneView.session.raycast(query)
+        if let hitResult = results.first{
+            setDiceLocation(with: hitResult)
+        }
+    }
+    
+    private func setDiceLocation(with hitResult: ARRaycastResult) {
+        let diceScene = SCNScene(named: "art.scnassets/diceCollada.scn")!
+        if let diceNode = diceScene.rootNode.childNode(withName: "Dice", recursively: true){
+            diceNode.position = SCNVector3(
+                x: hitResult.worldTransform.columns.3.x,
+                y: hitResult.worldTransform.columns.3.y + diceNode.boundingSphere.radius,
+                z: hitResult.worldTransform.columns.3.z)
+            sceneView.scene.rootNode.addChildNode(diceNode)
+            
+            let randomX = Float(arc4random_uniform(4) + 1) * (Float.pi/2)
+            let randomZ = Float(arc4random_uniform(4) + 1) * (Float.pi/2)
+            
+            diceNode.runAction(
+                SCNAction.rotateBy(
+                    x: CGFloat(randomX * 5),
+                    y: 0,
+                    z: CGFloat(randomZ * 5),
+                    duration: 0.8)
+            )
+        }
     }
 }
