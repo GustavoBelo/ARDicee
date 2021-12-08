@@ -18,6 +18,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         rollAll()
     }
     
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        rollAll()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
